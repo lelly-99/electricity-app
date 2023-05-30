@@ -1,6 +1,5 @@
+// 
 function Electricity() {
-
-    // do we want to go with this or array? 
     let appliances = {
         'Stove': 10, 
         'Kettle': 5, 
@@ -8,39 +7,32 @@ function Electricity() {
         'Fridge': 13
     };
 
-    var units = 0
-    var unitsAvailable = 0
-    var advance = 0
-    var amountSpent = 0
-    var totalUnits = 0
-    //advance not taken
-    var advance = false
+    var units = 0;
+    var unitsAvailable = 0;
+    var advance = false;
+    var amountSpent = 0;
+    var totalUnits = 0;
 
     function topUpElectricity(amount) {
-        if(amount === 10){
-            units += 7
-        }else if(amount === 20){
-            units += 14
-        }else if(amount === 50){
-            units += 35
-        }else if((amount === 30 || amount === "advance") && advance === false){
-            units += 21
-            advance =  true
+        if (amount === 10) {
+            units += 7;
+        } else if (amount === 20) {
+            units += 14;
+        } else if (amount === 50) {
+            units += 35;
+        } else if ((amount === 30 || amount === "advance") && advance === false) {
+            units += 21;
+            advance = true;
         }
-        totalUnits = units
-        amountSpent += amount
-        unitsAvailable = units
-        return units
+        amountSpent += amount;
+        unitsAvailable = units;
+        return units;
     }
 
     function getUnitsAvailable() {
         return unitsAvailable;
     }
 
-    /*
-    * return true and substract from unit available if there is enough units to use the appliance
-    * other wise return false and do nothing.
-    */
     function useAppliance(appliance) {
         if (appliances.hasOwnProperty(appliance)) {
             if (unitsAvailable >= appliances[appliance]) {
@@ -60,11 +52,12 @@ function Electricity() {
     }
 
     function totalAmountSpent() {
-        return amountSpent
+        return amountSpent;
     }
 
-    function totalUnitsBought(){
-        return totalUnits
+    function totalUnitsBought() {
+        totalUnits = units;
+        return totalUnits;
     }
 
     return {
@@ -74,6 +67,5 @@ function Electricity() {
         useAppliance,
         totalAmountSpent,
         totalUnitsBought
-
     }
 }

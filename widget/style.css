@@ -6,9 +6,8 @@ body {
 
 .count {
 	font-size: 4em;
-	padding: 0.1em;
+	padding: 3px;
 	border: 2px solid;
-	background-color: orchid;
 	border-radius: 0.1em;
 }
 
