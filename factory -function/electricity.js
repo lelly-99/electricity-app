@@ -31,8 +31,7 @@ function Electricity() {
     }
 
     function getUnitsAvailable() {
-        unitsAvailable += units
-        return unitsAvailable;
+        return unitsAvailable += units;
     }
 
     /*
@@ -51,13 +50,14 @@ function Electricity() {
     }
 
     function advanceTaken() {
-        if (advance && unitsAvailable) {
-            advance = true;
+        if(unitsAvailable && advance === false){
+            units += 21
+            advance =  true
         }
         return advance;
     }
 
-    function totalAmountSpent(amount) {
+    function totalAmountSpent() {
         return amountSpent
     }
 
