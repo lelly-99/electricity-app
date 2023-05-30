@@ -1,5 +1,8 @@
 # electricity-app
 
+* [widget](./widget/index.html)
+* [tests](./test/index.html)
+
 Create a widget that allows a user to keep track of electricity usage.
 
 A user can:
