@@ -23,15 +23,18 @@ function Electricity() {
             units += 14
         }else if(amount === 50){
             units += 35
-        }else if(amount === "advance" && advance === false){
+        }else if((amount === 30 || amount === "advance") && advance === false){
             units += 21
             advance =  true
         }
+        totalUnits = units
+        amountSpent += amount
+        unitsAvailable = units
         return units
     }
 
     function getUnitsAvailable() {
-        return unitsAvailable += units;
+        return unitsAvailable;
     }
 
     /*
@@ -44,16 +47,15 @@ function Electricity() {
                 unitsAvailable -= appliances[appliance];
                 return true;
             }
-        }else{
-            return false;
         }
+        return false;
     }
 
     function advanceTaken() {
-        if(unitsAvailable && advance === false){
-            units += 21
-            advance =  true
+        if (unitsAvailable > 0 && advance === false) {
+            advance = true;
         }
+        unitsAvailable = units;
         return advance;
     }
 
