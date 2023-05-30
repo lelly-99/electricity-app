@@ -23,6 +23,7 @@ if (localStorage.getItem("unitsTotal")) {
 if (localStorage.getItem("amount")) {
     totalAmount.innerHTML = localStorage.getItem("amount");
 }
+
 // Factory Function instance 
 const electricity = Electricity();
 
@@ -41,7 +42,7 @@ function getSelectedAppliance() {
     var selectedAppliance = "";
     useElectricity.forEach(function (radio) {
         if (radio.checked) {
-            selectedAppliance = radio.value;
+            selectedAppliance = Number(radio.value)
         }
     });
     return selectedAppliance;
@@ -56,13 +57,33 @@ buyButton.addEventListener("click", function () {
     localStorage.setItem("unitsTotal", units);
     totalAmount.innerHTML = amount
     localStorage.setItem("amount", amount);
+
+
+    topUp.forEach(option => {
+        option.checked = false;
+      })
 });
 
 useButton.addEventListener("click", function () {
     var appliance = getSelectedAppliance();
-    var applianceUsed = electricity.useAppliance(appliance);
-    
-    if (applianceUsed) {
-        unitsAvailable.innerHTML = electricity.getUnitsAvailable();
+    if (appliance = "stove") {
+        unitsAvailable.innerHTML -= 10
+    } else if (appliance = "TV") {
+        unitsAvailable.innerHTML -= 3
+    }else if (appliance = "Kettle") {
+        unitsAvailable.innerHTML -= 5
+    }else if (appliance = "Fridge") {
+        unitsAvailable.innerHTML -= 13
     }
+
+    useElectricity.forEach(option => {
+        option.checked = false;
+      })
+
+    // var appliance = getSelectedAppliance();
+    // var applianceUsed = electricity.useAppliance(appliance);
+    
+    // if (applianceUsed) {
+    //     unitsAvailable.innerHTML = electricity.getUnitsAvailable();
+    // }
 });
